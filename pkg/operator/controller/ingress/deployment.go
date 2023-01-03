@@ -60,6 +60,8 @@ const (
 	RouterHeaderBufferSize           = "ROUTER_BUF_SIZE"
 	RouterHeaderBufferMaxRewriteSize = "ROUTER_MAX_REWRITE_SIZE"
 
+	RouterCookieNameEnvName = "ROUTER_COOKIE_NAME"
+
 	RouterLoadBalancingAlgorithmEnvName    = "ROUTER_LOAD_BALANCE_ALGORITHM"
 	RouterTCPLoadBalancingAlgorithmEnvName = "ROUTER_TCP_BALANCE_SCHEME"
 
@@ -942,6 +944,13 @@ func desiredRouterDeployment(ci *operatorv1.IngressController, ingressController
 		env = append(env,
 			corev1.EnvVar{Name: RouterUniqueHeaderName, Value: headerName},
 			corev1.EnvVar{Name: RouterUniqueHeaderFormat, Value: fmt.Sprintf("%q", headerFormat)},
+		)
+
+	}
+
+	if ci.Spec.DefaultCookieName != "" {
+		env = append(env,
+			corev1.EnvVar{Name: RouterCookieNameEnvName, Value: ci.Spec.DefaultCookieName},
 		)
 	}
 

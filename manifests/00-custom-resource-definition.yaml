@@ -117,6 +117,9 @@ spec:
                     type: string
                 type: object
                 x-kubernetes-map-type: atomic
+              defaultCookieName:
+                description: "set default cookie name using the ROUTER_COOKIE_NAME environment variable"
+                type: string
               domain:
                 description: "domain is a DNS name serviced by the ingress controller
                   and is used to configure multiple features: \n * For the LoadBalancerService

@@ -64,6 +64,9 @@ type IngressControllerSpec struct {
 	// +optional
 	Domain string `json:"domain,omitempty"`
 
+	// +optional
+	DefaultCookieName string `json:"defaultCookieName,omitempty"`
+
 	// httpErrorCodePages specifies a configmap with custom error pages.
 	// The administrator must create this configmap in the openshift-config namespace.
 	// This configmap should have keys in the format "error-page-<error code>.http",
